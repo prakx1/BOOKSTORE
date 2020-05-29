@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CREATE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <script>
+        function booktypes() {
+            var a = document.getElementById('booktype').value;
+
+            if (a === "softcopy") {
+                console.log(a);
+                document.getElementById('booklabel').style.display = "block";
+                document.getElementById('bookcopy').style.display = "block";
+
+            } else {
+                console.log(a);
+                document.getElementById('booklabel').style.display = "none";
+                document.getElementById('bookcopy').style.display = "none";
+
+            }
+        }
+    </script>
+    <!-- Custom Theme files -->
+
+    <!-- //Custom Theme files -->
+    <!-- web font -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- //web font -->
+
+    <link rel="stylesheet" type="text/css" href='stylesheets/addBook.css'>
+
+</head>
+
+<body>
+    <!-- main -->
+    <div class="main-w3layouts wrapper">
+        <h1>Create Book</h1>
+        <div class="main-agileinfo">
+            <div class="agileits-top">
+                <form action="add" method="post" enctype="multipart/form-data">
+                    <input class="text" type="text" name="title" placeholder="Title" required="" maxlength="33">
+                    <input class="text" type="text" name="author" placeholder="Author" required="" maxlength="23">
+                    <input class="text" type="text" name="publisher" placeholder="Publisher" required="" maxlength="23"> <br>
+
+                    <span>  <label for="category">Choose a Category :&nbsp; </label> </span>
+                    <select id="category" name="category" class="custom-select" autofocus required="">
+                            <option disabled selected value>-- choose category--</option>
+                            <option value="action">Action</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="Humour">Humour</option>
+                            <option value="comics">Comics</option>
+                            <option value="comics">Fantasy</option>
+                            <option value="comics">Horror</option>
+                            <option value="comics">Self-Help</option>
+                            <option value="comics">Biographies</option>
+                            <option value="comics">Educational</option>
+
+
+
+
+
+
+                        </select>
+                    <br><br>
+                    <div>
+                        <span>  <label for="booktype">Available as : &emsp;&emsp;&emsp;</label> </span>
+                        <select id="booktype" name="availableAs" autofocus required="" onchange="booktypes()">
+                            <option  value="" disabled selected value>-- choose one --</option>
+                            <option value="softcopy">softcopy</option>
+                            <option value="hardcopy">hardcopy</option>
+                            
+                        </select>
+                    </div><br>
+                    <span>  <label for="price">Price in rupees : &emsp;&ensp;&nbsp; </label> </span>
+                    <input type="number" id="price" name="bookPrice" min="0" required=""> &ensp;<span>(set '0' for free)</span>
+                    <br><br>
+                    <label for="description">Description : </label> <br>
+                    <textarea id="description_box" name="description" rows="7" cols="60" style="resize:none">Describe book</textarea> <br><br>
+                    <label for="img">Choose image : </label><br>
+                    <input type="file" id="bookimg" name="bookimg" accept="image/*">
+                    <br><br>
+                    <label for="book" id="booklabel" style="display: none;">Choose book : </label>
+                    <input type="file" id="bookcopy" name="bookcopys" accept=".pdf,.doc" style="display: none;">
+
+
+
+                    <br>
+
+                    <div class="wthree-text">
+                        <label class="anim">
+							<input type="checkbox" class="checkbox" name ="check" required="">
+							<span>I Agree To The Terms & Conditions</span>
+						</label>
+                        <div class="clear"> </div>
+                    </div>
+                    <input type="submit" value="CREATE BOOK">
+                </form>
+
+            </div>
+        </div>
+
+        <ul class="colorlib-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <!-- //main -->
+
+
+
+</body>
+
+</html>

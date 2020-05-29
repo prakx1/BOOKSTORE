@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <title>
+        book store
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <script>
+        function booktypes() {
+            var a = document.getElementById('booktype').value;
+
+            if (a === "softcopy") {
+                console.log(a);
+                document.getElementById('booklabel').style.display = "block";
+                document.getElementById('bookcopy').style.display = "block";
+
+            } else {
+                console.log(a);
+                document.getElementById('booklabel').style.display = "none";
+                document.getElementById('bookcopy').style.display = "none";
+
+            }
+        }
+    </script>
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="stylesheets/updateprofile.css">
+
+</head>
+
+<body>
+
+    <body>
+        <!-- main -->
+        <div class="main-w3layouts wrapper">
+            <h1>Update Profile</h1>
+            <div class="main-agileinfo">
+                <div class="agileits-top">
+                    <form action="updateprofile" method="post" enctype="multipart/form-data">
+                        <input class="text" type="text" name="username" placeholder="username" required="" maxlength="33" value='<%=username%>'>
+                        <input class="text" type="email" name="email" placeholder="email" required="" maxlength="23" value='<%=useremail%>'><br>
+
+
+                        <span>  <label for="category">Gender :&nbsp; </label> </span>
+                        <select id="category" name="gender" class="custom-select" autofocus required="">
+                            <option disabled selected value>-- choose category--</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                            
+                        </select>
+                        <br><br>
+
+
+                        <label for="img">Profile picture : </label>
+                        <input type="file" id="bookimg" name="profileimg" accept="image/*">
+                        <br><br>
+
+                        <br>
+
+                        <div class="wthree-text">
+                            <label class="anim">
+							<input type="checkbox" class="checkbox" name ="check" required="">
+							<span>I Agree To The Terms & Conditions</span>
+						</label>
+                            <div class="clear"> </div>
+                        </div>
+                        <input type="submit" value="Update">
+                    </form>
+
+                </div>
+            </div>
+
+            <ul class="colorlib-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+
+
+    </body>
+
+</html>
+
+</html>

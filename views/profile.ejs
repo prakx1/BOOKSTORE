@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <title>
+        book store
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/profile.css">
+
+</head>
+
+<body>
+
+
+
+
+    <div class="topnav" id="myTopnav">
+        <a href="/">Home</a>
+        <a href="about">About us</a>
+        <a href="help">Help</a>
+
+        <a href="#about" class="active">Discussion</a>
+        <div class="dropdown">
+            <button class="dropbtn">Account
+      <i class="fa fa-caret-down"></i>
+    </button>
+            <div class="dropdown-content">
+                <a href="profile">Profile</a>
+                <a href="signup">Signup</a>
+                <a href="login">Login</a>
+                <a href="logout">Logout</a>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+
+
+
+
+    <div class="scroll_type">
+
+
+        <% userbooks.forEach(function(book){ %>
+
+            <div class="card">
+                <div class="divforimage">
+                    <img src='uploads/<%=book.imageurl%>' alt="Avatar" class="img">
+
+                </div>
+
+                <div class="container">
+                    <h3 class="general_info"><b><%= book.title %></b></h3>
+                    <p class="general_info">Id:
+                        <%= book._id%>
+                    </p>
+                    <p class="general_info">Author :
+                        <%= book.author %>
+                    </p>
+                    <p class="general_info">Publisher :
+                        <%= book.publisher %>
+                    </p>
+                    <p class="general_info">Available as :
+                        <%= book.availableAs %>
+                    </p>
+
+                    <p class="general_info">Price :
+                        <%= book.price %>
+                    </p>
+                    <span class="general_info"> Category :
+                            <%= book.category %>
+                    </span>
+                    <% if(book.price==0){ %>
+                        <% if(book.availableAs=="softcopy"){ %>
+                            <% if(book.softcopy_available==1){ %>
+
+                                <div style="float: right;">
+
+                                    <a class="general_info" href='uploads/<%=book.bookurl%>' download>download</a>
+
+                                </div>
+                                <% } %>
+
+                                    <% } %>
+                                        <% } %>
+
+
+                </div>
+
+            </div>
+            <% })%>
+
+                <% if(bookcount==0){ %>
+
+
+                    <div class="card">
+                        <div class="divforimage">
+                            <img src='uploads/nobook.png' alt="Avatar" class="img">
+
+                        </div>
+
+                        <div class="container">
+                            <h3 class="general_info"><b>Currently you dont have any book</b></h3>
+
+                        </div>
+
+                    </div>
+
+                    <% } %>
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="theend">
+                            <p style="text-align: center;">
+                                the end
+                            </p>
+                        </div>
+
+
+    </div>
+
+    <div id="profile_info">
+        <p class="general_info" style="text-align: center;"><b>Profile Information</b> </p>
+        <img src='images/<%=user.profileurl%>' id="profile_pic">
+        <p class="general_info" style="text-align: center;">
+            <b><%=user.username %></b>
+
+        </p>
+        <p id="profile_update_button">
+            <a href="updateprofile" id="profile_update_button1"> Update Profile</a>
+        </p>
+        <p class="general_info">
+            <b>UserId : </b>
+            <%=user._id %>
+
+        </p>
+        <p class="general_info">
+            <b>Email : </b>
+            <%=user.email %>
+        </p>
+        <p class="general_info">
+            <b>Gender : </b>
+            <%=user.gender %>
+        </p>
+        <p class="general_info">
+            <b>Bookcount : </b>
+            <%=user.bookcount %> &nbsp;&nbsp;[<b>softcopy : </b>
+                <%=user.softcopycount %> ,<b>hardcopy : </b>
+                    <%=user.hardcopycount %>]
+        </p>
+        <p class="general_info">
+            <b>Verified : </b>
+            <%=user.isVerified %>
+        </p>
+
+
+    </div>
+
+    <div id="profile_buttons">
+        <span>
+            <a href="add" id="addbutton">Add Book</a>
+            <a href="deletebook" id="deletebutton">Delete Book</a>
+            <a href="updatebook" id="updatebutton">Update Book</a>
+        </span>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+</html>
