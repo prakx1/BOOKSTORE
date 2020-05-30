@@ -14,6 +14,7 @@ router.use(bodyParser.json());
 
 
 router.get('/', (req, res, next) => {
+    let login =req.session.user;
     if (req.session.user) {
         var books = req.session.currentUser.bookCollection;
         var bookscount = req.session.currentUser.bookcount;
@@ -23,6 +24,7 @@ router.get('/', (req, res, next) => {
 
 
         res.render('profile', {
+            login:login,
             userbooks: books,
             user: currentuser,
             bookcount: bookscount

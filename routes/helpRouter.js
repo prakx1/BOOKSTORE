@@ -15,9 +15,13 @@ router.use(bodyParser.json());
 
 
 router.get('/', (req, res, next) => {
+    let login =req.session.user;
 
 
-    res.render('help.ejs');
+
+    res.render('help.ejs',{
+        login:login
+    });
 
 
 });
