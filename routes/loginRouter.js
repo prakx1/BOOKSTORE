@@ -43,6 +43,7 @@ router.post('/', (req, res, next) => {
                 console.log("user exist");
                 req.session.user = 'authenticated';
                 req.session.currentUser = user1;
+                //users.findById(currentUser._id).populate('books')
                 res.render('index', {
                     title: "You are successfully logged in !!!",
                     route: "/"

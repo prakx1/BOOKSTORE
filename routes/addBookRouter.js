@@ -10,6 +10,7 @@ var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 var users = require('../models/users');
+var books=require('../models/books');
 
 router.use(bodyParser.json());
 
@@ -62,16 +63,17 @@ router.post('/', upload.fields([{ name: 'bookimg', maxCount: 1 }, { name: 'bookc
                 });
 
             } else {
-                var book = {
+                var book =books({
                     title: req.body.title,
                     author: req.body.author,
                     publisher: req.body.publisher,
                     desc: req.body.description,
                     availableAs: req.body.availableAs,
                     price: req.body.bookPrice,
-                    category: req.body.category
-                }
-
+                    category: req.body.category,
+                    owner:user1._id
+                })
+                book.save()
 
                 try {
                     var imageurl1 = req.files.bookimg[0].filename;
@@ -106,7 +108,9 @@ router.post('/', upload.fields([{ name: 'bookimg', maxCount: 1 }, { name: 'bookc
                 }
 
 
-                user1.bookCollection.push(book);
+
+         
+                user1.bookCollection.push(book._id);
                 user1.bookcount = user1.bookcount + 1;
                 user1.save()
                     .then((successuser) => {
@@ -121,9 +125,6 @@ router.post('/', upload.fields([{ name: 'bookimg', maxCount: 1 }, { name: 'bookc
                     .catch((err) => {
                         next(err)
                     });
-
-
-
 
 
             }
@@ -141,3 +142,13 @@ router.post('/', upload.fields([{ name: 'bookimg', maxCount: 1 }, { name: 'bookc
 module.exports = router;
 
 module.exports = router;
+
+
+// var book = {
+//     title: req.body.title,
+//     author: req.body.author,
+//     publisher: req.body.publisher,
+//     desc: req.body.description,
+//     availableAs: req.body.availableAs,
+//     price: req.body.bookPrice,
+//     category: req.body.category
