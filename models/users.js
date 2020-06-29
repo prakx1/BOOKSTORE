@@ -1,64 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
-var bookSchema = new Schema({
-
-    title: {
-        type: String,
-        required: true,
-    },
-    author: {
-        type: String,
-        required: true,
-    },
-    publisher: {
-        type: String,
-        default: "not set"
-
-
-    },
-    desc: {
-        type: String,
-        default: "not set"
-    },
-    availableAs: {
-        type: String, //either hardcopy or softcopy
-        required: true
-    },
-
-    price: {
-        type: Number,
-        default: 0
-    },
-    category: {
-        type: String,
-        default: "not set"
-    },
-    imageurl: {
-        type: String,
-        default: 'nobook.png'
-
-    },
-    bookurl: {
-        type: String,
-        default: ''
-    },
-    softcopy_available: {
-        type: Number,
-        default: 0
-    }
-
-
-
-
-
-
-
-});
-
-
-
-
+var books=require('./books');
 
 var userSchema = new Schema({
 
@@ -74,7 +16,6 @@ var userSchema = new Schema({
         type: String,
         default: '',
     
-
     },
     email: {
         type: String,
@@ -111,7 +52,12 @@ var userSchema = new Schema({
         default: 'nodp.jpg'
     },
 
-    bookCollection: [bookSchema]
+    bookCollection: [
+        {
+            type:Schema.Types.ObjectId,
+            ref:'books' 
+        }
+     ]
 });
 var users = mongoose.model('user', userSchema);
 module.exports = users;

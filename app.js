@@ -35,9 +35,9 @@ app.set('view engine', 'ejs');
 
 
 
-const url = 'mongodb://localhost:27017/book';
+const url = 'mongodb://localhost:27017/booktest';
 
-mongoose.connect(url)
+mongoose.connect(url,{ useNewUrlParser: true , useUnifiedTopology: true})
     .then((db) => {
         console.log("connected to server");
     })
