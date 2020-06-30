@@ -5,7 +5,7 @@
     "scripts": {
         "start": "node ./bin/www",
         "devstart": "nodemon ./bin/www",
-        "serverstart": "DEBUG=book:* & npm run devstart"
+        "serverstart": "DEBUG=book:* npm run devstart"
     },
     "dependencies": {
         "body-parser": "^1.19.0",
@@ -13,6 +13,8 @@
         "debug": "~2.6.9",
         "ejs": "^3.1.2",
         "express": "~4.16.0",
+        "express-ejs-layouts": "^2.5.0",
+        "express-layout": "^0.1.0",
         "express-session": "^1.15.6",
         "http-errors": "~1.6.2",
         "jade": "~1.11.0",

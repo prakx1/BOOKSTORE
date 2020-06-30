@@ -19,7 +19,8 @@ router.get('/', (req, res, next) => {
     } else {
         res.render('index', {
             title: "You are already logged in !!!",
-            route: "home"
+            route: "home",
+            layout:false
         });
 
     }

@@ -80,7 +80,8 @@ router.post('/', (req, res, next) => {
         console.log("please retype password")
         res.render('index', {
             title: "Password doesn't match",
-            route: "signup"
+            route: "signup",
+            layout:false
         });
 
 

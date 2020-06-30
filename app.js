@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+var expressLayouts = require('express-ejs-layouts');
 
 
 var usersRouter = require('./routes/users');
@@ -29,6 +30,7 @@ var FileStore = require('session-file-store')(session);
 var app = express();
 
 // view engine setup
+app.use(expressLayouts);//using express ejs templates
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'ejs');
@@ -63,6 +65,11 @@ app.use(session({
     store: new FileStore()
 }));
 
+//ADDED A GLOBAL VARIBALE login FOR ALL ROUTES 
+app.use('*',(req,res,next)=>{
+    app.locals.login=req.session.user;
+    next()
+  })
 
 app.use('/', homeRouter);
 app.use('/users', usersRouter);
@@ -91,7 +98,8 @@ function auth(req, res, next) {
         } else {
             res.render('index', {
                 title: "Please log in to proceed ",
-                route: "login"
+                route: "login",
+                layout:false
             });
         }
 
