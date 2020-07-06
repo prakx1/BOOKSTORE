@@ -5,7 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
-var expressLayouts = require('express-ejs-layouts');
+
 
 
 var usersRouter = require('./routes/users');
@@ -21,6 +21,7 @@ var profileRouter = require('./routes/profileRouter');
 var updateprofileRouter = require('./routes/updateprofileRouter');
 var deletebookRouter = require('./routes/deletebookRouter');
 var updatebookRouter = require('./routes/updatebookRouter');
+var searchRouter=require('./routes/searchRouter');
 
 //session requirements
 var session = require('express-session');
@@ -30,7 +31,7 @@ var FileStore = require('session-file-store')(session);
 var app = express();
 
 // view engine setup
-app.use(expressLayouts);//using express ejs templates
+
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'ejs');
@@ -80,7 +81,7 @@ app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/help', helpRouter);
 app.use('/about', aboutRouter);
-
+app.use('/search',searchRouter);
 
 
 function auth(req, res, next) {
@@ -99,7 +100,7 @@ function auth(req, res, next) {
             res.render('index', {
                 title: "Please log in to proceed ",
                 route: "login",
-                layout:false
+            
             });
         }
 

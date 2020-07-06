@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <title>
+        book store
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/profile.css">
+
+
+    <div class="topnav" id="myTopnav">
+        <a href="/" class="active">Home</a>
+        <!-- <a href="about">About us</a> -->
+        <a href="help">Help</a>
+        <a href="#about">Discussion</a>
+         <!-- SEARCH FORM -->
+            <form class="form-inline mr-auto" action="/search" method="GET">
+                <input class="form-control" name="q" type="text" placeholder="Search Books" aria-label="Search ">
+                <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">Search</button>
+              </form>
+        
+        
+        <div class="dropdown">
+            <button class="dropbtn">Account
+    <i class="fa fa-caret-down"></i>
+    </button>
+            <div class="dropdown-content">
+                <% if(login) { %>                  
+                <a href="profile">Profile</a>
+                <a href="logout">Logout</a> 
+                <%}else{ %>
+                <a href="signup">Signup</a>
+                <a href="login">Login</a>
+                <%}%>
+            </div>
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+       
+
+
+
+
+
+
+    <div class="scroll_type">
+
+
+        <% foundBooks.forEach(function(book){ %>
+
+            <div class="card">
+                <div class="divforimage">
+                    <img src='uploads/<%=book.imageurl%>' alt="Avatar" class="img">
+
+                </div>
+
+                <div class="container">
+                    <h3 class="general_info"><b><%= book.title %></b></h3>
+                    
+                    <p class="general_info">Author :
+                        <%= book.author %>
+                    </p>
+                    <p class="general_info">Publisher :
+                        <%= book.publisher %>
+                    </p>
+                    <p class="general_info">Available as :
+                        <%= book.availableAs %>
+                    </p>
+
+                    <p class="general_info">Price :
+                        <%= book.price %>
+                    </p>
+                    <span class="general_info"> Category :
+                            <%= book.category %>
+                    </span>
+
+
+
+                </div>
+
+            </div>
+            <% })%>
+                    <%if (foundBooks.length==0){%>
+
+                        <div class="theend">
+                            <p style="text-align: center;">
+                                NO books Found
+                            </p>
+                        </div>
+                    <%}%>
+
+    </div>
+
+</body>
+
+</html>

@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
         res.render('index', {
             title: "You are already logged in !!!",
             route: "home",
-            layout:false
+           
         });
 
     }

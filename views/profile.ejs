@@ -12,6 +12,45 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/profile.css">
 
 
+    <div class="topnav" id="myTopnav">
+        <a href="/" class="active">Home</a>
+        <!-- <a href="about">About us</a> -->
+        <a href="help">Help</a>
+        <a href="#about">Discussion</a>
+        
+        
+        <div class="dropdown">
+            <button class="dropbtn">Account
+    <i class="fa fa-caret-down"></i>
+    </button>
+            <div class="dropdown-content">
+                <% if(login) { %>                  
+                <a href="profile">Profile</a>
+                <a href="logout">Logout</a> 
+                <%}else{ %>
+                <a href="signup">Signup</a>
+                <a href="login">Login</a>
+                <%}%>
+            </div>
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+       
+
 
 
 
@@ -155,23 +194,6 @@
 
 
 
-
-
-
-
-
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
-    </script>
 </body>
-
-</html>
 
 </html>

@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
 
 
     res.render('help.ejs',{
-        layout:false
+        
     });
 
 
