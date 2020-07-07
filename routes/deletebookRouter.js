@@ -9,14 +9,12 @@ var users = require('../models/users');
 
 router.use(bodyParser.json());
 
-
 router.get('/', (req, res, next) => {
-
-
+  
     res.render('deletebook');
 
-
 });
+
 
 router.post('/', (req, res, next) => {
     console.log(req.body.bookid);
@@ -27,7 +25,7 @@ router.post('/', (req, res, next) => {
             console.log(user1.email);
             var bookCheck= user1.bookCollection.id(id); 
             if (bookCheck){
-                        //console.log(bookCheck);
+                        
                         user1.bookCollection.pull({ _id:id});
                         
                         user1.bookcount = user1.bookcount - 1;
@@ -45,7 +43,6 @@ router.post('/', (req, res, next) => {
                             .then((successuser) => {
                                 req.session.currentUser = user1;
                                 console.log(id)
-                                //console.log(req.session.currentUser.bookCollection);
 
                                 res.render('index', {
                                     title: "Book successfully deleted",
