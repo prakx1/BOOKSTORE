@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 
 var users = require('../models/users');
+const books = require('../models/books');
 
 router.use(bodyParser.json());
 
@@ -23,36 +24,33 @@ router.post('/', (req, res, next) => {
     users.findOne({email:req.session.currentUser.email})
         .then((user1) => {
             console.log(user1.email);
-            var bookCheck= user1.bookCollection.id(id); 
+            var bookCheck= user1.bookCollection.includes(id);
+            console.log(bookCheck) 
             if (bookCheck){
-                        
-                        user1.bookCollection.pull({ _id:id});
-                        
-                        user1.bookcount = user1.bookcount - 1;
-
+                        books.findByIdAndDelete(id)
+                            .then((deleted)=>{
+                                user1.bookCollection.pull(id);
+                                user1.bookcount = user1.bookcount - 1;
                     
-                                if(bookCheck.availableAs=='softcopy'){
-                                    user1.softcopycount=user1.softcopycount-1;
-                                } 
-                                else if (bookCheck.availableAs=='hardcopy'){
-                                    user1.softcopycount=user1.softcopycount-1;
-                                }
-
-                        user1.save()
-
-                            .then((successuser) => {
-                                req.session.currentUser = user1;
-                                console.log(id)
-
-                                res.render('index', {
-                                    title: "Book successfully deleted",
-                                    route: "profile"
-                                });
-
-                        })
-                        .catch((err) => {
-                            next(err)
-                        });
+                                // if(bookCheck.availableAs=='softcopy'){
+                                //     user1.softcopycount=user1.softcopycount-1;
+                                // } 
+                                // else if (bookCheck.availableAs=='hardcopy'){
+                                //     user1.softcopycount=user1.hardcopycount-1;
+                                // }
+                                user1.save()
+                                .then((successuser) => {
+                                    req.session.currentUser = user1;
+                                    res.render('index', {
+                                        title: "Book successfully deleted",
+                                        route: "profile"
+                                    });
+                            })
+                            .catch((err) => {
+                                next(err)
+                            });
+                            })
+    
                     }
             else{
                     console.log('BOOK NOT FOUND!!!')
@@ -65,9 +63,6 @@ router.post('/', (req, res, next) => {
         })
         .catch((err) => {
             next(err)
-
         });
-
-
 });
 module.exports = router;

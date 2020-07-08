@@ -85,7 +85,7 @@ app.use('/search',searchRouter);
 
 
 function auth(req, res, next) {
-    console.log(req.session);
+    console.log(req.session.user);
     if (!req.session.user) {
         res.render('index', {
             title: "Please log in to proceed further",

@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
     let login =req.session.user;
     if (req.session.user) {
          //Populating the user with the books collection.
+         console.log(req.session.currentUser.bookCollection)
          users.findById(req.session.currentUser._id).populate({path:"bookCollection"})
             .then((user)=>{
                 userbooks=user.bookCollection
