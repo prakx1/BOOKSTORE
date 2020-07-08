@@ -29,15 +29,9 @@ router.post('/', (req, res, next) => {
             if (bookCheck){
                         books.findByIdAndDelete(id)
                             .then((deleted)=>{
+                                //Pulling the (removing) the id from bookcOLLECTION ARRAY
                                 user1.bookCollection.pull(id);
                                 user1.bookcount = user1.bookcount - 1;
-                    
-                                // if(bookCheck.availableAs=='softcopy'){
-                                //     user1.softcopycount=user1.softcopycount-1;
-                                // } 
-                                // else if (bookCheck.availableAs=='hardcopy'){
-                                //     user1.softcopycount=user1.hardcopycount-1;
-                                // }
                                 user1.save()
                                 .then((successuser) => {
                                     req.session.currentUser = user1;
