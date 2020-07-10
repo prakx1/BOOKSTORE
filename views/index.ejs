@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+
+<body>
+    <p>
+
+    </p>
+
+</body>
+<script>
+    var result = '<%- JSON.stringify(title) %>'
+    result = result.slice(1, -1);
+    var route = '<%- JSON.stringify(route) %>'
+    route = route.slice(1, -1);
+
+    window.alert(result);
+    window.location.replace(route);
+</script>
+
+</html>
