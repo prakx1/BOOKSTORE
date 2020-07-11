@@ -21,7 +21,7 @@ var profileRouter = require('./routes/profileRouter');
 var updateprofileRouter = require('./routes/updateprofileRouter');
 var deletebookRouter = require('./routes/deletebookRouter');
 var updatebookRouter = require('./routes/updatebookRouter');
-var searchRouter=require('./routes/searchRouter2');
+var searchRouter=require('./routes/searchRouter');
 
 //session requirements
 var session = require('express-session');
