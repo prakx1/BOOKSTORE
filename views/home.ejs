@@ -19,7 +19,24 @@
             <a href="help">Help</a>
             <a href="#about">Discussion</a>
             <!-- SEARCH FORM -->
-            <form class="form-inline mr-auto" action="/search" method="GET">
+    <div class="searchbox">
+        <form class="example" method="" action="" enctype="multipart/form-data">
+            <div id="filter">
+                <select id="category" name="Filter" class="custom-select" autofocus required="">
+                    <option disabled selected value>Filter</option>
+                    <option value="book">book</option>
+                    <option value="author">Author</option>
+                    <option value="publication">Publication</option>
+                    
+
+                </select>
+            </div>
+            <div id=keyword>
+                <input type="text" placeholder="Search.." name="search2">
+                <button type="submit"><i class="fa fa-search"></i></button>
+
+            </div>
+            <!-- <form class="form-inline mr-auto" action="/search" method="GET">
                 <input class="form-control" name="q" type="text" placeholder="Search Books" aria-label="Search ">
                 <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">Search</button>
               </form>
@@ -28,7 +45,7 @@
             <div class="dropdown">
                 <button class="dropbtn">Account
         <i class="fa fa-caret-down"></i>
-        </button>
+        </button> -->
                 <div class="dropdown-content">
                     <% if(login){ %>                  
                     <a href="profile">Profile</a>
