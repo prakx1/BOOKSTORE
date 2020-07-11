@@ -14,42 +14,42 @@
 
     <div class="topnav" id="myTopnav">
         <a href="/" class="active">Home</a>
-        <!-- <a href="about">About us</a> -->
+        <a href="about">About us</a>
         <a href="help">Help</a>
         <a href="#about">Discussion</a>
-        
-        
+
+
         <div class="dropdown">
             <button class="dropbtn">Account
     <i class="fa fa-caret-down"></i>
     </button>
             <div class="dropdown-content">
-                <% if(login) { %>                  
-                <a href="profile">Profile</a>
-                <a href="logout">Logout</a> 
-                <%}else{ %>
-                <a href="signup">Signup</a>
-                <a href="login">Login</a>
-                <%}%>
+                <% if(login) { %>
+                    <a href="profile">Profile</a>
+                    <a href="logout">Logout</a>
+                    <%}else{ %>
+                        <a href="signup">Signup</a>
+                        <a href="login">Login</a>
+                        <%}%>
             </div>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-</div>
 
 
 
-<script>
-    function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
         }
-    }
-</script>
+    </script>
 
-       
+
 
 
 
@@ -60,13 +60,10 @@
 
 
         <% userbooks.forEach(function(book){ %>
-
             <div class="card">
                 <div class="divforimage">
                     <img src='uploads/<%=book.imageurl%>' alt="Avatar" class="img">
-
                 </div>
-
                 <div class="container">
                     <h3 class="general_info"><b><%= book.title %></b></h3>
                     <p class="general_info">Id:
@@ -81,7 +78,6 @@
                     <p class="general_info">Available as :
                         <%= book.availableAs %>
                     </p>
-
                     <p class="general_info">Price :
                         <%= book.price %>
                     </p>
@@ -91,39 +87,25 @@
                     <% if(book.price==0){ %>
                         <% if(book.availableAs=="softcopy"){ %>
                             <% if(book.softcopy_available==1){ %>
-
                                 <div style="float: right;">
-
                                     <a class="general_info" href='uploads/<%=book.bookurl%>' download>download</a>
-
                                 </div>
                                 <% } %>
-
                                     <% } %>
                                         <% } %>
-
-
                 </div>
-
             </div>
             <% })%>
 
                 <% if(bookcount==0){ %>
-
-
                     <div class="card">
                         <div class="divforimage">
                             <img src='uploads/nobook.png' alt="Avatar" class="img">
-
                         </div>
-
                         <div class="container">
                             <h3 class="general_info"><b>Currently you dont have any book</b></h3>
-
                         </div>
-
                     </div>
-
                     <% } %>
                         <div class="theend">
                             <p style="text-align: center;">
@@ -181,6 +163,6 @@
 
 
 
-</body>
+    </body>
 
 </html>

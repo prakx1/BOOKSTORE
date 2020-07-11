@@ -6,21 +6,48 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <link rel="stylesheet" type="text/css" href='stylesheets/home.css'>
+    <meta name="author" content="colorlib.com">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <title>Book Store</title>
 
+
+
 </head>
- 
-    <body>  
-        
-        <div class="topnav" id="myTopnav">
-            <a href="/" class="active">Home</a>
-            <a href="about">About us</a>
-            <a href="help">Help</a>
-            <a href="#about">Discussion</a>
-            <!-- SEARCH FORM -->
+
+<body>
+
+    <div class="topnav" id="myTopnav">
+        <a href="/" class="active">Home</a>
+        <a href="about">About us</a>
+        <a href="help">Help</a>
+        <a href="#about">Discussion</a>
+
+       <div class="dropdown">
+        <button class="dropbtn">Account
+  <i class="fa fa-caret-down"></i>
+</button>
+        <div class="dropdown-content">
+            <% if(login) { %>                  
+                <a href="profile">profile</a>
+                <a href="logout">Logout</a> 
+                <%}else{ %>
+                <a href="signup">Signup</a>
+                <a href="login">Login</a>
+                <%}%>
+        </div>
+    </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
     <div class="searchbox">
-        <form class="example" method="" action="" enctype="multipart/form-data">
+        <form class="example" method="" action="/search" enctype="multipart/form-data">
             <div id="filter">
                 <select id="category" name="Filter" class="custom-select" autofocus required="">
                     <option disabled selected value>Filter</option>
@@ -36,27 +63,31 @@
                 <button type="submit"><i class="fa fa-search"></i></button>
 
             </div>
-            <!-- <form class="form-inline mr-auto" action="/search" method="GET">
-                <input class="form-control" name="q" type="text" placeholder="Search Books" aria-label="Search ">
-                <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit">Search</button>
-              </form>
-              
-            
-            <div class="dropdown">
-                <button class="dropbtn">Account
-        <i class="fa fa-caret-down"></i>
-        </button> -->
-                <div class="dropdown-content">
-                    <% if(login){ %>                  
-                    <a href="profile">Profile</a>
-                    <a href="logout">Logout</a> 
-                    <%}else{ %>
-                    <a href="signup">Signup</a>
-                    <a href="login">Login</a>
-                    <%}%>
-                </div>
-        </div>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+
+
+
+        </form>
+    </div>
+
+    <div class="category">
+        <a href="/"><button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Action</button></a>
+        <button style="margin:5px 5px 5px 5px" float=type="button" class="btn btn-primary">Comics</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Biography</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Historical</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
+        <button style="margin:5px 5px 5px 5px" float=type="button" class="btn btn-primary">Comics</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Biography</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Historical</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
+        <button style="margin:5px 5px 5px 5px" float=type="button" class="btn btn-primary">Comics</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Biography</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Historical</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
+        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
+
     </div>
 
 
@@ -72,7 +103,7 @@
         }
     </script>
 
-           
-    </body>
+
+</body>
 
 </html>
