@@ -3,49 +3,101 @@ var router = express.Router();
 var path = require('path');
 var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+var multer = require('multer');
 
 
 var users = require('../models/users');
+const books = require('../models/books');
+
 
 router.use(bodyParser.json());
 
 
-
-
-router.get('/', (req, res, next) => {
-
-    res.render('updatebook');
-
-
+var Storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads');
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname));
+    }
 });
 
+var upload = multer({
+    storage: Storage
 
-router.post('/', (req, res, next) => {
-    console.log(req.body.bookid);
-    users.updateOne({}, {
-            $pull: {
-                'bookCollection': {
-                    'title': 'dsad'
+}).single('bookimage');
+
+
+
+
+router.route('/:bookid')
+    .get((req, res, next) => {
+        console.log(req.params.bookid + "fuck");
+
+
+        books.findById(req.params.bookid)
+            .then((book) => {
+
+                if (book != null) {
+
+                    res.render('updatebook', {
+                        Book: book
+                    });
+
+                } else {
+
                 }
-            }
-        })
-        .then((user1) => {
-            res.render('index', {
-                title: "Book successfully deleted",
-                route: "profile"
+            })
+            .catch((err) => {
+                next(err)
             });
-            console.log("yash1" + user1);
+
+    })
+    .post(upload, (req, res, next) => {
+
+        console.log(req.params.bookid + "fuck1");
+
+        books.findById(req.params.bookid)
+            .then((book) => {
+
+                if (book != null) {
+
+                    book.title = req.body.title;
+                    book.author = req.body.author;
+                    book.publisher = req.body.publisher;
+                    book.price = req.body.price;
+                    try {
+                        var imageurl1 = req.file.filename;
+                        book.imageurl = imageurl1;
 
 
-        })
-        .catch((err) => {
-            next(err);
+                    } catch (e) {
+                        console.log("error in bookimage");
 
-        });
-});
+                    } finally {
+                        console.log(book.imageurl);
+                    }
+
+                    book.save()
+                        .then((successbook) => {
+                            res.render('index', {
+                                title: "book successfully updated",
+                                route: "/profile"
+                            });
+                        })
+                        .catch((err) => {
+                            next(err);
+                        })
 
 
-
+                } else {
+                    console.log("book is empty")
+                }
+            })
+            .catch((err) => {
+                next(err)
+            });
+    });
 
 
 module.exports = router;

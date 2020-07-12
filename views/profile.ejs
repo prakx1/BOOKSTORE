@@ -87,13 +87,29 @@
                     <% if(book.price==0){ %>
                         <% if(book.availableAs=="softcopy"){ %>
                             <% if(book.softcopy_available==1){ %>
-                                <div style="float: right;">
-                                    <a class="general_info" href='uploads/<%=book.bookurl%>' download>download</a>
-                                </div>
-                                <% } %>
+                                <% if(book.price==0){ %>
+
+                                    <div style="float: right;">
+                                        <a class="general_info" href='uploads/<%=book.bookurl%>' download>download</a>
+                                    </div>
                                     <% } %>
                                         <% } %>
+                                            <% } %>
+                                                <% } %>
+
+
+
                 </div>
+                <br>
+                <br>
+                <div style="float: left;margin-left:25px;">
+                    <a class="general_info" href="updatebook/<%=book._id%>">Edit</a>
+                </div>
+                <div style="float: right;margin-right:25px;">
+                    <a class="general_info" href="deletebook/<%=book._id%>">Delete</a>
+                </div>
+
+
             </div>
             <% })%>
 
