@@ -38,11 +38,7 @@
 
 .dropdown {
     float: right;
-<<<<<<< HEAD
     overflow: hidden;
-=======
-    position: relative;
->>>>>>> 6a3ee8f0740295dbfe020acb55e5a85f1ebb82ff
 }
 
 
@@ -75,11 +71,8 @@
 /* Style the links inside the dropdown */
 
 .dropdown-content a {
-<<<<<<< HEAD
-    float: none;
-=======
->>>>>>> 6a3ee8f0740295dbfe020acb55e5a85f1ebb82ff
-    color: black;
+    <<<<<<< HEAD float: none;
+    =======>>>>>>>6a3ee8f0740295dbfe020acb55e5a85f1ebb82ff color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -152,8 +145,7 @@
         width: 100%;
         text-align: left;
     }
-<<<<<<< HEAD
-=======
+    <<<<<<< HEAD=======
 }
 
 
@@ -219,5 +211,4 @@ form.example::after {
     height: 670px;
     background-color: rgb(8, 10, 8);
     padding-top: 10%;
->>>>>>> 6a3ee8f0740295dbfe020acb55e5a85f1ebb82ff
 }
