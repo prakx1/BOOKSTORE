@@ -103,10 +103,10 @@
                 <br>
                 <br>
                 <div style="float: left;margin-left:25px;">
-                    <a class="general_info" href="updatebook/<%=book._id%>">Edit</a>
+                    <a class="general_info" href="updatebook/<%=book._id%>" onclick="return confirm('Do you want to Edit Book?')">Edit</a>
                 </div>
                 <div style="float: right;margin-right:25px;">
-                    <a class="general_info" href="deletebook/<%=book._id%>">Delete</a>
+                    <a class="general_info" href="deletebook/<%=book._id%>" onclick="return confirm('Do you want to delete Book?')">Delete</a>
                 </div>
 
 
@@ -170,8 +170,7 @@
     <div id="profile_buttons">
         <span>
             <a href="add" id="addbutton">Add Book</a>
-            <a href="deletebook" id="deletebutton">Delete Book</a>
-            <a href="updatebook" id="updatebutton">Update Book</a>
+           
         </span>
     </div>
 

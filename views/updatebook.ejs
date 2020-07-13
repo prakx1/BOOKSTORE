@@ -21,7 +21,7 @@
     </script>
 
     <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="stylesheets/updatebook.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/updatebook.css">
 
 </head>
 
@@ -34,10 +34,12 @@
             <div class="main-agileinfo">
                 <div class="agileits-top">
                     <form action="/updatebook/<%=Book._id%>" method="post" enctype="multipart/form-data">
-                        <input class="text" type="text" name="title" placeholder="title" required="" maxlength="33" value=' <%=Book.title%>'>
-                        <input class="text" type="text" name="author" placeholder="author" required="" maxlength="23" value='<%=Book.author%>'>
-                        <input class="text" type="number" name="price" placeholder="price" required="" maxlength="23" value='<%=Book.price%>'>
+                        <input class="text" type="text" name="title" placeholder="title" required="" maxlength="33" value=' <%=Book.title%>'><br>
+                        <input class="text" type="text" name="author" placeholder="author" required="" maxlength="23" value='<%=Book.author%>'><br>
                         <input class="text" type="text" name="publisher" placeholder="publisher" required="" maxlength="33" value='<%=Book.publisher%>'><br>
+                        <label for="img">Book Price : </label>
+                        <input class="text" type="number" name="price" placeholder="price" required="" maxlength="23" value='<%=Book.price%>'>
+                        <br>
 
 
 
