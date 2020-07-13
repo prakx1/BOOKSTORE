@@ -32,10 +32,7 @@ router.route('/:bookid')
                             user1.save()
                                 .then((successuser) => {
                                     req.session.currentUser = user1;
-                                    res.render('index', {
-                                        title: "Book successfully deleted",
-                                        route: "profile"
-                                    });
+                                    res.redirect('/profile')
                                 })
                                 .catch((err) => {
                                     next(err)
