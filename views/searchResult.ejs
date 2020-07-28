@@ -29,6 +29,7 @@
                 <%}else{ %>
                 <a href="signup">Signup</a>
                 <a href="login">Login</a>
+
                 <%}%>
             </div>
     </div>
@@ -47,13 +48,6 @@
         }
     }
 </script>
-
-       
-
-
-
-
-
 
     <div class="scroll_type">
 
@@ -82,9 +76,11 @@
                     <p class="general_info">Price :
                         <%= book.price %>
                     </p>
-                    <span class="general_info"> Category :
+                    <p class="general_info"> Category :
                             <%= book.category %>
-                    </span>
+                    </p>
+
+                    <a href="/owner/<%= book.owner%>" class="btn btn-info" role="button">See Owner</a>
 
 
 

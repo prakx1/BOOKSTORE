@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 var users = require('../models/users');
+const { route } = require('./homeRouter');
 
 router.use(bodyParser.json());
 
@@ -45,9 +46,9 @@ router.post('/', (req, res, next) => {
                 req.session.user = 'authenticated';
                 req.session.currentUser = user1;
                 //users.findById(currentUser._id).populate('books')
-                res.render('index', {
-                    title: "You are successfully logged in !!!",
-                    route: "/"
+                res.render('index.ejs',{
+                    title:"Successfully Logged in!!",
+                    route:'/'
                 });
 
             }

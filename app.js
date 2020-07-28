@@ -22,6 +22,7 @@ var updateprofileRouter = require('./routes/updateprofileRouter');
 var deletebookRouter = require('./routes/deletebookRouter');
 var updatebookRouter = require('./routes/updatebookRouter');
 var searchRouter=require('./routes/searchRouter');
+var bookownerRouter=require('./routes/bookownerRouter')
 
 //session requirements
 var session = require('express-session');
@@ -82,6 +83,8 @@ app.use('/logout', logoutRouter);
 app.use('/help', helpRouter);
 app.use('/about', aboutRouter);
 app.use('/search',searchRouter);
+app.use('/owner',bookownerRouter)
+
 
 
 function auth(req, res, next) {
@@ -115,16 +118,6 @@ app.use('/profile', profileRouter);
 app.use('/updateprofile', updateprofileRouter);
 app.use('/deletebook', deletebookRouter);
 app.use('/updatebook', updatebookRouter);
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/profile.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
 
 
     <div class="topnav" id="myTopnav">
@@ -58,10 +58,11 @@
 
     <div class="scroll_type">
 
-        <% userbooks.forEach(function(book){ %>
+
+        <% ownerbooks.forEach(function(book){ %>
             <div class="card">
                 <div class="divforimage">
-                    <img src='uploads/<%=book.imageurl%>' alt="Avatar" class="img">
+                    <img src='/uploads/<%=book.imageurl%>' alt="Avatar" class="img">
                 </div>
                 <div class="container">
                     <h3 class="general_info"><b><%= book.title %></b></h3>
@@ -80,7 +81,6 @@
                     <p class="general_info">Price :
                         <%= book.price %>
                     </p>
-
                     <span class="general_info"> Category :
                             <%= book.category %>
                     </span>
@@ -102,79 +102,35 @@
                 </div>
                 <br>
                 <br>
-                <div style="float: left;margin-left:25px;">
-                    <a class="general_info" href="updatebook/<%=book._id%>" onclick="return confirm('Do you want to Edit Book?')">Edit</a>
-                </div>
-                <div style="float: right;margin-right:25px;">
-                    <a class="general_info" href="deletebook/<%=book._id%>" onclick="return confirm('Do you want to delete Book?')">Delete</a>
-                </div>
+
 
 
             </div>
             <% })%>
-
-                <% if(bookcount==0){ %>
-                    <div class="card">
-                        <div class="divforimage">
-                            <img src='uploads/nobook.png' alt="Avatar" class="img">
-                        </div>
-                        <div class="container">
-                            <h3 class="general_info"><b>Currently you dont have any book</b></h3>
-                        </div>
-                    </div>
-                    <% } %>
-                        <div class="theend">
-                            <p style="text-align: center;">
-                                the end
-                            </p>
-                        </div>
 
 
     </div>
 
     <div id="profile_info">
         <p class="general_info" style="text-align: center;"><b>Profile Information</b> </p>
-        <img src='images/<%=user.profileurl%>' id="profile_pic">
+        <img src='/images/<%=owner.profileurl%>' id="profile_pic">
         <p class="general_info" style="text-align: center;">
-            <b><%=user.username %></b>
+            <b><%=owner.username %></b>
 
-        </p>
-        <p id="profile_update_button">
-            <a href="updateprofile" id="profile_update_button1"> Update Profile</a>
-        </p>
-        <p class="general_info">
-            <b>UserId : </b>
-            <%=user._id %>
 
-        </p>
-        <p class="general_info">
-            <b>Email : </b>
-            <%=user.email %>
-        </p>
+ 
         <p class="general_info">
             <b>Gender : </b>
-            <%=user.gender %>
+            <%=owner.gender %>
         </p>
         <p class="general_info">
             <b>Bookcount : </b>
-            <%=user.bookcount %> &nbsp;&nbsp;
-        </p>
-        <p class="general_info">
-            <b>Verified : </b>
-            <%=user.isVerified %>
+            <%=owner.bookcount %> &nbsp;&nbsp;
         </p>
 
 
+
     </div>
-
-    <div id="profile_buttons">
-        <span>
-            <a href="add" id="addbutton">Add Book</a>
-           
-        </span>
-    </div>
-
-
 
 
 

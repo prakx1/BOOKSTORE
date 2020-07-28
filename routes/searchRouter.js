@@ -11,7 +11,7 @@ router.get('/',(req,res,next)=>{
                     .then((foundBooks)=>{
                         if (foundBooks != null){
                             res.sendStatus=200;
-                            console.log(foundBooks)
+                            //console.log(foundBooks)
                             res.render('searchResult.ejs',{
                                 foundBooks:foundBooks
                             })
@@ -33,7 +33,7 @@ router.get('/',(req,res,next)=>{
                                        res.render('searchResult.ejs',{
                                            foundBooks:foundBooks
                                        })
-                                    //res.json(foundBooks)
+                                
                                    }
                                })
                                .catch((err)=>{
