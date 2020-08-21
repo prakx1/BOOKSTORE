@@ -1,35 +1,36 @@
-var createError = require('http-errors');
-var express = require('express');
-var multer = require('multer');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const multer = require('multer');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const mongoose = require('mongoose');
 
 
 
-var usersRouter = require('./routes/users');
-var signupRouter = require('./routes/signupRouter');
-var loginRouter = require('./routes/loginRouter');
-var logoutRouter = require('./routes/logoutRouter');
-var homeRouter = require('./routes/homeRouter');
-var addBookRouter = require('./routes/addBookRouter');
-var profileRouter = require('./routes/profileRouter');
-var helpRouter = require('./routes/helpRouter');
-var aboutRouter = require('./routes/aboutRouter');
-var profileRouter = require('./routes/profileRouter');
-var updateprofileRouter = require('./routes/updateprofileRouter');
-var deletebookRouter = require('./routes/deletebookRouter');
-var updatebookRouter = require('./routes/updatebookRouter');
-var searchRouter=require('./routes/searchRouter');
-var bookownerRouter=require('./routes/bookownerRouter')
+const usersRouter = require('./routes/users');
+const signupRouter = require('./routes/signupRouter');
+const loginRouter = require('./routes/loginRouter');
+const logoutRouter = require('./routes/logoutRouter');
+const homeRouter = require('./routes/homeRouter');
+const addBookRouter = require('./routes/addBookRouter');
+const profileRouter = require('./routes/profileRouter');
+const helpRouter = require('./routes/helpRouter');
+const aboutRouter = require('./routes/aboutRouter');
+const updateprofileRouter = require('./routes/updateprofileRouter');
+const deletebookRouter = require('./routes/deletebookRouter');
+const updatebookRouter = require('./routes/updatebookRouter');
+const searchRouter = require('./routes/searchRouter');
+const bookownerRouter = require('./routes/bookownerRouter')
+const confirmationRouter = require('./routes/confirmationRouter')
+const resendRouter = require('./routes/resendRouter');
 
 //session requirements
-var session = require('express-session');
-var FileStore = require('session-file-store')(session);
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 //session requirements end
 
-var app = express();
+const app = express();
 
 // view engine setup
 
@@ -41,7 +42,10 @@ app.set('view engine', 'ejs');
 
 const url = 'mongodb://localhost:27017/booktest';
 
-mongoose.connect(url,{ useNewUrlParser: true , useUnifiedTopology: true})
+mongoose.connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
     .then((db) => {
         console.log("connected to server");
     })
@@ -54,7 +58,9 @@ mongoose.connect(url,{ useNewUrlParser: true , useUnifiedTopology: true})
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+    extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -68,10 +74,11 @@ app.use(session({
 }));
 
 //ADDED A GLOBAL VARIBALE login FOR ALL ROUTES 
-app.use('*',(req,res,next)=>{
-    app.locals.login=req.session.user;
+app.use('*', (req, res, next) => {
+    app.locals.login = req.session.user;
     next()
-  })
+})
+
 
 app.use('/', homeRouter);
 app.use('/users', usersRouter);
@@ -82,13 +89,15 @@ app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/help', helpRouter);
 app.use('/about', aboutRouter);
-app.use('/search',searchRouter);
-app.use('/owner',bookownerRouter)
-
-
+app.use('/search', searchRouter);
+app.use('/owner', bookownerRouter)
+//email verification
+app.use('/confirmation', confirmationRouter);
+app.use('/resend/', resendRouter);
+// app.use()
 
 function auth(req, res, next) {
-    console.log(req.session.user);
+    console.log("lauda " + req.session.user);
     if (!req.session.user) {
         res.render('index', {
             title: "Please log in to proceed further",
@@ -97,13 +106,13 @@ function auth(req, res, next) {
 
     } else {
         if (req.session.user === 'authenticated') {
+            //User is authenticated,access  allowed to protected routes.
             next();
-            //user is authenticated
         } else {
             res.render('index', {
                 title: "Please log in to proceed ",
                 route: "login",
-            
+
             });
         }
 
@@ -111,8 +120,8 @@ function auth(req, res, next) {
     }
 };
 
-
 app.use(auth);
+//Proctected routes
 app.use('/add', addBookRouter);
 app.use('/profile', profileRouter);
 app.use('/updateprofile', updateprofileRouter);
@@ -122,15 +131,13 @@ app.use('/updatebook', updatebookRouter);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     next(createError(404));
 });
 
 
-
-
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

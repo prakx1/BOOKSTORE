@@ -45,13 +45,15 @@ var userSchema = new Schema({
         type: Number,
         default: 0
 
-
     },
     profileurl: {
         type: String,
         default: 'nodp.jpg'
     },
-
+    isVerified:{
+            type:Boolean,
+            default:false
+    },
     bookCollection: [
         {
             type:Schema.Types.ObjectId,
