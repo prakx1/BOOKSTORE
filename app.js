@@ -6,8 +6,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
+//middlewares
+const auth = require('./middlewares/auth');
 
-
+//Routes
 const usersRouter = require('./routes/users');
 const signupRouter = require('./routes/signupRouter');
 const loginRouter = require('./routes/loginRouter');
@@ -82,8 +84,6 @@ app.use('*', (req, res, next) => {
 
 app.use('/', homeRouter);
 app.use('/users', usersRouter);
-
-
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
@@ -92,36 +92,15 @@ app.use('/about', aboutRouter);
 app.use('/search', searchRouter);
 app.use('/owner', bookownerRouter)
 //email verification
+
 app.use('/confirmation', confirmationRouter);
 app.use('/resend/', resendRouter);
-// app.use()
-
-function auth(req, res, next) {
-    console.log("lauda " + req.session.user);
-    if (!req.session.user) {
-        res.render('index', {
-            title: "Please log in to proceed further",
-            route: "login"
-        });
-
-    } else {
-        if (req.session.user === 'authenticated') {
-            //User is authenticated,access  allowed to protected routes.
-            next();
-        } else {
-            res.render('index', {
-                title: "Please log in to proceed ",
-                route: "login",
-
-            });
-        }
 
 
-    }
-};
 
 app.use(auth);
-//Proctected routes
+
+//Protected routes
 app.use('/add', addBookRouter);
 app.use('/profile', profileRouter);
 app.use('/updateprofile', updateprofileRouter);
