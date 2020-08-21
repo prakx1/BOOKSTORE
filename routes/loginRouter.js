@@ -4,8 +4,10 @@ var path = require('path');
 var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 var users = require('../models/users');
-var token= require('../models/token');
-const { route } = require('./homeRouter');
+var token = require('../models/token');
+const {
+    route
+} = require('./homeRouter');
 
 router.use(bodyParser.json());
 
@@ -15,13 +17,16 @@ router.get('/', (req, res, next) => {
     } else {
         res.render('index', {
             title: "You are already logged in !!!",
-            route: "home",         
+            route: "home",
         });
     }
 });
 
 router.post('/', (req, res, next) => {
-    users.findOne({ email: req.body.email, password: req.body.password })
+    users.findOne({
+            email: req.body.email,
+            password: req.body.password
+        })
         .then((user1) => {
             if (!user1) {
                 console.log("user doesnt exist");
@@ -30,15 +35,18 @@ router.post('/', (req, res, next) => {
                     route: "login"
                 });
             } else {
-            // Checking if the email is verified or not. 
-             if (!user1.isVerified) {
-              return res.status(401).send({ type: 'not-verified', msg: 'Your account has not been verified.' }); 
-             }
+                // Checking if the email is verified or not. 
+                if (!user1.isVerified) {
+                    return res.status(401).send({
+                        type: 'not-verified',
+                        msg: 'Your account has not been verified.'
+                    });
+                }
                 req.session.user = 'authenticated';
                 req.session.currentUser = user1;
-                res.render('index.ejs',{
-                    title:"Successfully Logged in!!",
-                    route:'/'
+                res.render('index.ejs', {
+                    title: "Successfully Logged in!!",
+                    route: '/'
                 });
 
             }
