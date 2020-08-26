@@ -1,6 +1,9 @@
-# packages
+#   packages
 node_modules
 
-
-#Temporary folders
+#   Temporary folders
 sessions
+.vscode
+
+#   files
+

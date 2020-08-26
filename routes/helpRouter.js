@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var JSAlert = require("js-alert");
+
 
 
 
@@ -15,14 +15,7 @@ router.use(bodyParser.json());
 
 
 router.get('/', (req, res, next) => {
-    let login =req.session.user;
-
-
-
-    res.render('help.ejs',{
-        
-    });
-
+    res.render('help.ejs');
 
 });
 router.post('/', (req, res, next) => {

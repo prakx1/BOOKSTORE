@@ -1,8 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
 
-
-var bookSchema = new Schema({
+const Schema = mongoose.Schema;
+const bookSchema = new Schema({
 
     title: {
         type: String,
@@ -21,7 +20,7 @@ var bookSchema = new Schema({
         default: "not set"
     },
     availableAs: {
-        type: String, //either hardcopy or softcopy
+        type: String, //    either hardcopy or softcopy
         required: true
     },
 
@@ -35,22 +34,22 @@ var bookSchema = new Schema({
     },
     imageurl: {
         type: String,
-        default: 'nobook.png'
+        default: "nobook.png"
 
     },
     bookurl: {
         type: String,
-        default: ''
+        default: ""
     },
     softcopy_available: {
         type: Number,
         default: 0
     },
-    owner:{
-        type:Schema.Types.ObjectId,
-        ref:'users'
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "users"
     }
 
 });
-var books=mongoose.model('books',bookSchema)
-module.exports=books;
+const books = mongoose.model("books", bookSchema);
+module.exports = books;
