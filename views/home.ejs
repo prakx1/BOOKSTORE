@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <link rel="stylesheet" type="text/css" href='stylesheets/home.css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/home.css">
     <meta name="author" content="colorlib.com">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,34 +20,36 @@
 
 
 </head>
+
 <body>
-<div>
-    <div class="topnav" id="myTopnav">
-        <a href="/"  class="active">Home</a>
-        <a href="about">About us</a>
-        <a href="help">Help</a>
-        <a href="#about">Discussion</a>
-        <div class="dropdown">
-            <button class="dropbtn">Account
-      <i class="fa fa-caret-down"></i>
-    </button>
-            <div class="dropdown-content">
-                <% if(login) { %>                  
-                    <a href="profile">Profile</a>
-                    <a href="logout">Logout</a> 
-                    <%}else{ %>
-                    <a href="signup">Signup</a>
-                    <a href="login">Login</a>
-                    <%}%>
+    <div>
+        <div class="topnav" id="myTopnav">
+            <a href="/" class="active">Home</a>
+            <a href="about">About us</a>
+            <a href="help">Help</a>
+            <a href="#about">Discussion</a>
+            <div class="dropdown">
+                <button class="dropbtn">Account
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="">dfsdfsdf</a>
+                    <% if(login) { %>
+                        <a href="profile">Profile</a>
+                        <a href="logout">Logout</a>
+                        <%}else{ %>
+                            <a href="signup">Signup</a>
+                            <a href="login">Login</a>
+                            <%}%>
+                </div>
             </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
         </div>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
-</div>  
     <div class="searchbox">
         <form class="example" method="" action="/search" enctype="multipart/form-data">
             <div id="filter">
-                <select id="category" name="Filter" class="custom-select" autofocus required="">
+                <select id="category" name="Filter" class="custom-select" autofocus required>
                     <option disabled selected value>Filter</option>
                     <option value="book">book</option>
                     <option value="author">Author</option>
@@ -56,7 +58,7 @@
 
                 </select>
             </div>
-            <div id=keyword>
+            <div id="keyword">
                 <input type="text" required="" placeholder="Search.." name="search2">
                 <button type="submit"><i class="fa fa-search"></i></button>
 

@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
 //  session requirements
 
@@ -31,22 +32,23 @@ const confirmationRouter = require("./routes/confirmationRouter");
 const resendRouter = require("./routes/resendRouter");
 
 const app = express();
-
+dotenv.config();
 // view engine setup
 
 app.set("views", path.join(__dirname, "views"));
 
 app.set("view engine", "ejs");
 
-const url = "mongodb://localhost:27017/booktest";
+const url = process.env.URL;
 
 mongoose
   .connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   })
   .then(() => {
-    console.log("connected to server");
+    console.log("connected to Database");
   })
   .catch((err) => {
     console.log(`${err}cant connect`);
