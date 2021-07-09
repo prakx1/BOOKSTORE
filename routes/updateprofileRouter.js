@@ -44,10 +44,11 @@ router.get('/', (req, res, next) => {
 
 router.post('/', upload, (req, res, next) => {
     users.findOne({
-            email: req.body.email,
-            username: req.body.username
+            email: req.body.email
         })
+    
         .then((user1) => {
+            console.log(user1)
             try {
                 user1.profileurl = "";
                 var imageurl1 = req.file.filename;
