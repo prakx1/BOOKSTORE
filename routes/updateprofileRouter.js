@@ -54,7 +54,7 @@ router.post('/', upload, (req, res, next) => {
 
 
             } catch (e) {
-                console.log("error in bookimage");
+                console.log(e);
 
             } finally {
                 console.log(user1.profileurl);
