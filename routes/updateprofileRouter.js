@@ -54,7 +54,7 @@ router.post('/', upload, (req, res, next) => {
                 console.log(imageurl1);
                 user1.profileurl = imageurl1;
 
-            console.
+  
             } catch (e) {
                 console.log(e);
 
