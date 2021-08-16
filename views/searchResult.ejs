@@ -1,104 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
-
 <head>
-    <title>
-        book store
-    </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/search.css">
+    <title>Search</title>
+    <style>
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/profile.css">
+    </style>
 
+</head>
 
-    <div class="topnav" id="myTopnav">
-        <a href="/" class="active">Home</a>
-        <!-- <a href="about">About us</a> -->
-        <a href="help">Help</a>
-        <a href="#about">Discussion</a>
-        
-        <div class="dropdown">
-            <button class="dropbtn">Account
-    <i class="fa fa-caret-down"></i>
-    </button>
-            <div class="dropdown-content">
-                <% if(login) { %>                  
-                <a href="profile">Profile</a>
-                <a href="logout">Logout</a> 
-                <%}else{ %>
-                <a href="signup">Signup</a>
-                <a href="login">Login</a>
+<body>
+    <header>
+        <div class="logo ">
+            <h2><a href="home"> Bookstore</a></h2>
+        </div>
 
-                <%}%>
-            </div>
-    </div>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-</div>
+        <ul class="nav">
+            <li><a href="contact">Login</a></li>
+            <li><a href="gallery">Profile</a></li>
+            <li><a href="gallery">Logout</a></li>
+            <li><a href="gallery">Sign Up</a></li>
 
+        </ul>
 
-
-<script>
-    function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
-        }
-    }
-</script>
-
-    <div class="scroll_type">
-
-
+    </header>
+    <div class="main">
         <% foundBooks.forEach(function(book){ %>
 
             <div class="card">
-                <div class="divforimage">
-                    <img src='uploads/<%=book.imageurl%>' alt="Avatar" class="img">
+                <p>
+                    <%= book.title %>
+                </p>
+                <p>
+                    <%= book.author %>
+                </p>
+                <p> Address</p>
+                <p>
+                    <%= book.availableAs %>
+                </p>
+                <p><a href="/owner/<%= book.owner%>" class="btn btn-info" role="button">See Owner</a></p>
 
-                </div>
-
-                <div class="container">
-                    <h3 class="general_info"><b><%= book.title %></b></h3>
-                    
-                    <p class="general_info">Author :
-                        <%= book.author %>
-                    </p>
-                    <p class="general_info">Publisher :
-                        <%= book.publisher %>
-                    </p>
-                    <p class="general_info">Available as :
-                        <%= book.availableAs %>
-                    </p>
-
-                    <p class="general_info">Price :
-                        <%= book.price %>
-                    </p>
-                    <p class="general_info"> Category :
-                            <%= book.category %>
-                    </p>
-
-                    <a href="/owner/<%= book.owner%>" class="btn btn-info" role="button">See Owner</a>
-
-
-
-                </div>
 
             </div>
-            <% })%>
-                    <%if (foundBooks.length==0){%>
-
-                        <div class="theend">
-                            <p style="text-align: center;">
-                                NO books Found
-                            </p>
-                        </div>
-                    <%}%>
 
     </div>
+    <% })%>
+        <%if (foundBooks.length==0){%>
 
+            <div class="theend">
+                <p style="text-align: center;">
+                    NO books Found
+                </p>
+            </div>
+            <%}%>
+
+                </div>
 </body>
 
 </html>

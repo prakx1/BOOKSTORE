@@ -1,101 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6a271b8d58.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/home.css">
 
+    <title>BookStore</title>
+    <style>
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/home.css">
-    <meta name="author" content="colorlib.com">
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <title>Book Store</title>
-
-
+    </style>
 
 </head>
 
 <body>
-    <div>
-        <div class="topnav" id="myTopnav">
-            <a href="/" class="active">Home</a>
-            <a href="about">About us</a>
-            <a href="help">Help</a>
-            <a href="#about">Discussion</a>
-            <div class="dropdown">
-                <button class="dropbtn">Account
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="">dfsdfsdf</a>
-                    <% if(login) { %>
-                        <a href="profile">Profile</a>
-                        <a href="logout">Logout</a>
-                        <%}else{ %>
-                            <a href="signup">Signup</a>
-                            <a href="login">Login</a>
-                            <%}%>
-                </div>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+
+    <header>
+        <div class="logo ">
+            <h2><a href="/"> Bookstore</a></h2>
         </div>
-    </div>
-    <div class="searchbox">
-        <form class="example" method="" action="/search" enctype="multipart/form-data">
-            <div id="filter">
-                <select id="category" name="Filter" class="custom-select" autofocus required>
-                    <option disabled selected value>Filter</option>
-                    <option value="book">book</option>
-                    <option value="author">Author</option>
-                    <option value="publication">Publication</option>
-                    
 
-                </select>
-            </div>
-            <div id="keyword">
-                <input type="text" required="" placeholder="Search.." name="search2">
-                <button type="submit"><i class="fa fa-search"></i></button>
+        <ul class="nav">
+            <% if(login) { %>
+                <li><a href="profile">Profile</a></li>
+                <li><a href="logout">Logout</a></li>
+                <%}else{ %>
+                    <li><a href="signup">Sign Up</a></li>
+                    <li><a href="login">Login</a></li>
+                    <%}%>
+        </ul>
 
-            </div>
+    </header>
 
+    <div class="main">
 
-
+        <form method="" action="/search" enctype="multipart/form-data" target="_self" name="search2" autocomplete="on"
+            required>
+            <label for="cars"></label>
+            <select id="category" name="Filter" class="custom-select" autofocus required>
+                <option value="book">Book</option>d
+                <option value="author">Author</option>
+            </select>
+            <input type="text" placeholder="Search books" id="search" name="search2">
+            <button type="submit" class="btn"><i class="fas fa-search"></i></button>
         </form>
     </div>
-
-    <div class="category">
-        <a href="/"><button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Action</button></a>
-        <button style="margin:5px 5px 5px 5px" float=type="button" class="btn btn-primary">Comics</button>
-        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Biography</button>
-        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Historical</button>
-        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
-        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
-        <button style="margin:5px 5px 5px 5px" float=type="button" class="btn btn-primary">Comics</button>
-        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Biography</button>
-        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Historical</button>
-        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
-        <button style="margin:5px 5px 5px 5px" type="button" class="btn btn-primary">Primary Button</button>
-    </div>
-
-
-
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
-    </script>
-
 
 </body>
 
