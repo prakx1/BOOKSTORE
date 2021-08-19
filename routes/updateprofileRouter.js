@@ -44,21 +44,25 @@ router.get('/', (req, res, next) => {
 
 router.post('/', upload, (req, res, next) => {
     users.findOne({
-            email: req.body.email,
-            username: req.body.username
+            email: req.body.email
         })
+    
         .then((user1) => {
+            console.log(user1)
             try {
+                user1.profileurl = "";
                 var imageurl1 = req.file.filename;
+                console.log(imageurl1);
                 user1.profileurl = imageurl1;
 
-
+  
             } catch (e) {
-                console.log("error in bookimage");
+                console.log(e);
 
             } finally {
                 console.log(user1.profileurl);
             }
+        console.log("AFTER IMAGE")
             user1.username = req.body.username;
             user1.email = req.body.email;
             user1.gender = req.body.gender;
