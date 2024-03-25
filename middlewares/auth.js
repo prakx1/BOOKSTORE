@@ -9,10 +9,6 @@ module.exports = function (req, res, next) {
   } else if (req.session.user === "authenticated") {
     //    User is authenticated,access  allowed to protected routes.
     next();
-  } else {
-    res.render("index", {
-      title: "Please log in to proceed ",
-      route: "login",
-    });
+    next();
   }
 };
